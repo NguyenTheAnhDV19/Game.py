@@ -94,8 +94,7 @@ while run :
                     if dis < radius :
                         guessed.append(ltr)
                         letter[3] = False
-                        if ltr not in word :
-                            hangman_status += 1
+                        if ltr not in word :hangman_status += 1
 
     won = True 
     for letter in word :
