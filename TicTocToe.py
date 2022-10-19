@@ -1,3 +1,5 @@
+# what a mess. But do not have intention to put these into class. 
+
 import pygame, sys
 import numpy as np
 from pygame.constants import K_0 
