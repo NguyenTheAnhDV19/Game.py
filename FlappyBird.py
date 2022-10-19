@@ -1,11 +1,14 @@
+'''
+Create the ping_pong game that restart everytime the ball hit the ring. 
+'''
+
 import pygame, sys , random
 from pygame import mixer 
 pygame.init()
 mixer.init()
 clock = pygame.time.Clock()
 
-width = 576 
-height = 800  
+width,height = 800, 576   
 
 red = (202,0,0)
 
@@ -195,4 +198,4 @@ while True :
             gamemanager.x,gamemanager.y = pygame.mouse.get_pos()
     gamemanager.run()
     pygame.display.flip()
-    clock.tick(120)
+    clock.tick(60)
