@@ -1,5 +1,13 @@
+'''
+Because the left_right movement demand exact amount of space which is 40 to perform properly. Lead to the fact that one have to use the big amount of time delay to 
+prevent too much movement. Hence make the program run kind of glitch and unefficent.
+Beside that, one's just to lazy to even make the alright end_game and restart_game method() nor add sound and background picture. 
+And the check_line() method looks kind of messy.
+Another fact is that one could use the numpy.array to make the program run more smoothly. But for now one just have much more work to do and loose interest in this project.
+'''
+
 from copy import deepcopy
-import pygame,sys,random,time
+import pygame,sys,random
 
 width = 400 
 height = 600 
@@ -17,10 +25,15 @@ T = [(1,0),(1,1),(1,2),(2,1)]
 Z = [(2,0),(1,1),(2,1),(1,2)]
 
 fingure = T,Z,L,R,_
+
+#color 
 color = (255,255,255),(0,255,255),(0,255,0),(0,0,255),(255,0,0)
 
+#delay 
 clock = pygame.time.Clock()
-class Fingure_run :
+
+#main 
+class Main :
     def __init__(self) -> None:
         self.fingure = [pygame.Rect(rect[0]*40,rect[1]*40,40,40) for rect in random.choice(deepcopy(fingure))]
         self.color = random.choice(color)
@@ -46,8 +59,9 @@ class Fingure_run :
             if self.check_fall_fingure() :
                 self.fingure = fingure 
                 break 
-            if rect.x < 0 or rect.x > width - 40 :
+            if rect.x < -1 or rect.x > width - 39 :
                 self.fingure = fingure 
+                break
     def check_fall_fingure(self) :
         for rect in self.fingure :
             if rect.bottom > height  : return True 
@@ -81,6 +95,9 @@ class Fingure_run :
             if self.check_fall_fingure() :
                 self.fingure = fingure
                 break 
+            if rect.x < -1 or rect.x > width - 39 :
+                self.fingure = fingure 
+                break
     def game_over(self) :
         for rect in self.board : 
             if rect.y <= 0 : return True 
@@ -95,7 +112,7 @@ class Fingure_run :
         self.check_line()
         self.start_new_game()
 
-main = Fingure_run()
+main = Main()
 
 while True :
     for event in pygame.event.get() :
