@@ -1,3 +1,6 @@
+#Just watch this from another youtuber and change a bit of method. Could've had better end_game and restart_game but do not care enough to do such a thing.
+#I do think using sprite is a bit unessential and messy with its group and stuff but just dont want to change it cause i have another thing more interesting to do. At least more than these. 
+
 import pygame,sys 
 pygame.mixer.pre_init(44100,-16,2,512)
 pygame.init() 
