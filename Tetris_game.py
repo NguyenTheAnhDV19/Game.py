@@ -64,9 +64,9 @@ class Main :
                 break
     def check_fall_fingure(self) :
         for rect in self.fingure :
-            if rect.bottom > height  : return True 
+            if rect.bottom > height+1   : return True 
             for board in self.board :
-                if rect.bottom > board.top and rect.x == board.x : return True 
+                if rect.bottom > board.top +1 and rect.x == board.x : return True 
         return False 
     def new_fingure(self) :
         self.color = random.choice(color)
@@ -80,7 +80,7 @@ class Main :
                 for rect in list : 
                     self.board.remove(rect)
                 self.fall_board_check(y)
-            list =[]
+            list.clear() 
     def fall_board_check(self,y) :
         for rect in self.board :
             if rect.y <= (y*40) : 
@@ -111,7 +111,7 @@ class Main :
         self.move_horientially()
         self.check_line()
         self.start_new_game()
-
+        
 main = Main()
 
 while True :
@@ -122,14 +122,14 @@ while True :
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT : main.move_right_left += 40
             if event.key == pygame.K_LEFT  : main.move_right_left -= 40
-            if event.key == pygame.K_DOWN  : main.fall += 0
+            if event.key == pygame.K_DOWN  : main.fall_ += 0 # Dont try to change 
             if event.key == pygame.K_SPACE : main.rotate()
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_RIGHT : main.move_right_left -= 40
             if event.key == pygame.K_LEFT  : main.move_right_left += 40
-            if event.key == pygame.K_DOWN  : main.fall -= 0
+            if event.key == pygame.K_DOWN  : main.fall_ -= 0  # Dont try to change
     screen.fill((0,0,0))
     main.run()
-    [pygame.draw.rect(screen,(255,255,255),coor,1)for coor in grid]
+    [pygame.draw.rect(screen,(255,255,255),coor,1)for coor in grid] # grid in picture
     pygame.time.delay(60)
     pygame.display.update()
